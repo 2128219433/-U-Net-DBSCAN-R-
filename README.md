@@ -10,9 +10,10 @@
 ### 预处理步骤
 1. **加载ECG信号：** 使用`wfdb`库加载数据集中的ECG信号，主要使用第一个导联信号。
 2. **标准化：** 每个ECG信号标准化为零均值和单位方差。具体公式如下：
-   \[
-   \text{normalized\_signal} = \frac{\text{ecg\_signal} - \mu}{\sigma}
-   \]
+$
+\text{normalized\_signal} = \frac{\text{ecg\_signal} - \mu}{\sigma}
+$
+
    其中，$\mu$ 是信号的均值，$\sigma$ 是信号的标准差。
 3. **分割：** 信号分割为5000个样本的片段，以便批处理。
 4. **滤波：** 使用三阶Butterworth滤波器应用带通滤波（5-20 Hz）以去除噪声。Butterworth滤波器的传递函数为：
@@ -111,7 +112,7 @@ v_t &= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2 \\
 ## 可视化
 下图显示了包含真实R峰和检测到的R峰的ECG信号。绿色点表示真实R峰，红色点表示检测到的R峰：
 
-![ECG信号及其真实和检测的R峰](output.png)
+$$![output](https://github.com/2128219433/-U-Net-DBSCAN-R-/assets/124794397/499159a6-fb91-4129-86d9-14641306d5b8)$$
 
 ## 讨论
 U-Net和DBSCAN结合在准确检测ECG信号中的R峰方面表现出色。高阳性预测值和F1评分证明了模型的鲁棒性。然而，灵敏度可以进一步提高，这表明一些真实的R峰被漏检。未来的工作可以集中在优化阈值和聚类参数以提高灵敏度。
